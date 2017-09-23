@@ -7,6 +7,16 @@ class TextbooksController < ApplicationController
   def show
   end
 
+  def new
+    @textbook = Textbook.new
+  end
+
+  def create
+    @textbook = Textbook.create(textbook_params)
+    return render :new  unless @textbook.save
+    redirect_to textbook_path(@textbook)
+  end
+
   def edit
   end
 
@@ -24,8 +34,8 @@ class TextbooksController < ApplicationController
   end
   helper_method :textbook
 
-  def new_textbook 
-    @new_textbook ||= Textbook.new(params[:textbook])
+
+  def textbook_params
+    params.require(:textbook).permit(:title, :price)
   end
-  helper_method :new_textbook
 end

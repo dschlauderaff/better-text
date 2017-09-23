@@ -1,1 +1,9 @@
-<%= form_for new_textbook do |f| %>
+<%= form_for @textbook do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %></br>
+
+  <%= f.label :price %>
+  <%= f.number_field :price %></br>
+
+  <%= f.submit %>
+<% end %>
