@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170922235827) do
+ActiveRecord::Schema.define(version: 20170923190958) do
 
   create_table "adoptions", force: :cascade do |t|
     t.integer "course_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170922235827) do
 
   create_table "textbooks", force: :cascade do |t|
     t.string "title"
-    t.integer "inventory"
+    t.integer "inventory", default: 0
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
