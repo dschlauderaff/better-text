@@ -9,4 +9,6 @@ class Course < ApplicationRecord
     textbooks.sum {|textbook| textbook.price}
   end
 
+  
+
 end
