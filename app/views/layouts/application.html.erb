@@ -19,6 +19,8 @@
            <!--  nav here -->
             <p> <%= "Signed in as #{current_user.email if user_signed_in?}" %></p>  <!-- TODO: temporary for development, remove after testing -->
             <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
+            <%= link_to "Textbooks", textbooks_path %>
+            <%= link_to "Courses", courses_path %>
             <% if user_signed_in? %>
               
               <%= link_to("Sign Out", destroy_user_session_path, :method => 'delete') %>
