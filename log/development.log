@@ -1146,3 +1146,6 @@ Migrating to CreateAdoptions (20170922235827)
   [1m[36mTextbook Load (0.2ms)[0m  [1m[34mSELECT  "textbooks".* FROM "textbooks" ORDER BY "textbooks"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
   [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mCourse Load (0.6ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" ORDER BY "courses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mAdoption Load (0.4ms)[0m  [1m[34mSELECT  "adoptions".* FROM "adoptions" WHERE "adoptions"."course_id" = ? LIMIT ?[0m  [["course_id", 1], ["LIMIT", 11]]
+  [1m[36mTextbook Load (0.4ms)[0m  [1m[34mSELECT "textbooks".* FROM "textbooks" INNER JOIN "adoptions" ON "textbooks"."id" = "adoptions"."textbook_id" WHERE "adoptions"."course_id" = ?[0m  [["course_id", 1]]
