@@ -4,7 +4,7 @@ class Adoption < ApplicationRecord
 
   def order_to_enrollment
     if !ordered
-      textbook.update(inventory: course.enrollment)
+      textbook.update(inventory:  textbook.inventory + course.enrollment)
       update(ordered: true)
     end
   end
