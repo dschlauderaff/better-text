@@ -1,13 +1,6 @@
 <h3><%= link_to textbook.title, textbook_path(textbook) %>
-<p>Unit cost: $<%= textbook.price %></p>
-<p><%= textbook.inventory %> units on hand. | $<%= textbook.inventory_cost %> total cost.</p>
-<p>Adopted for:</p>
 
 <ul>
-  <% textbook.adoptions.each do |adoption| %>
-    <li><%= link_to adoption.course.name, course_path(adoption.course) %>
-    <% if !adoption.ordered && user_signed_in? %>
-      <%= button_to "Order Textbooks", adoptions_path(course_id: adoption.course) %>
-    <% end %></li>
-  <% end %>
+  <li>Unit cost: $<%= textbook.price %></li>
+  <li><%= textbook.inventory %> units in inventory.</li> 
 </ul>
