@@ -1100,3 +1100,22 @@ Migrating to CreateAdoptions (20170922235827)
   [1m[35m (34.0ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mAdoption Load (0.9ms)[0m  [1m[34mSELECT  "adoptions".* FROM "adoptions" LIMIT ?[0m  [["LIMIT", 11]]
   [1m[36mTextbook Load (0.4ms)[0m  [1m[34mSELECT  "textbooks".* FROM "textbooks" INNER JOIN "adoptions" ON "textbooks"."id" = "adoptions"."textbook_id" WHERE "adoptions"."course_id" = ? LIMIT ?[0m  [["course_id", 1], ["LIMIT", 11]]
+  [1m[36mAdoption Load (1.1ms)[0m  [1m[34mSELECT  "adoptions".* FROM "adoptions" ORDER BY "adoptions"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTextbook Load (0.3ms)[0m  [1m[34mSELECT  "textbooks".* FROM "textbooks" WHERE "textbooks"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCourse Load (0.2ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[33mUPDATE "textbooks" SET "inventory" = ?, "updated_at" = ? WHERE "textbooks"."id" = ?[0m  [["inventory", 500], ["updated_at", "2017-09-23 03:02:40.106520"], ["id", 2]]
+  [1m[35m (22.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[33mUPDATE "adoptions" SET "ordered" = ?, "updated_at" = ? WHERE "adoptions"."id" = ?[0m  [["ordered", "t"], ["updated_at", "2017-09-23 03:02:40.140911"], ["id", 1]]
+  [1m[35m (22.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT  "courses".* FROM "courses" ORDER BY "courses"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "textbooks" ("title", "inventory", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Bio Study Guide"], ["inventory", 0], ["price", 45], ["created_at", "2017-09-23 03:07:34.668499"], ["updated_at", "2017-09-23 03:07:34.668499"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "adoptions" ("course_id", "textbook_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["course_id", 1], ["textbook_id", 3], ["created_at", "2017-09-23 03:07:34.674656"], ["updated_at", "2017-09-23 03:07:34.674656"]]
+  [1m[35m (23.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTextbook Load (0.4ms)[0m  [1m[34mSELECT  "textbooks".* FROM "textbooks" INNER JOIN "adoptions" ON "textbooks"."id" = "adoptions"."textbook_id" WHERE "adoptions"."course_id" = ? LIMIT ?[0m  [["course_id", 1], ["LIMIT", 11]]
+  [1m[36mTextbook Load (0.5ms)[0m  [1m[34mSELECT "textbooks".* FROM "textbooks" INNER JOIN "adoptions" ON "textbooks"."id" = "adoptions"."textbook_id" WHERE "adoptions"."course_id" = ?[0m  [["course_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[33mUPDATE "textbooks" SET "inventory" = ?, "updated_at" = ? WHERE "textbooks"."id" = ?[0m  [["inventory", 10], ["updated_at", "2017-09-23 03:14:45.459289"], ["id", 1]]
+  [1m[35m (29.1ms)[0m  [1m[36mcommit transaction[0m
