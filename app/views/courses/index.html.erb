@@ -1,0 +1,5 @@
+<h1>Courses</h1>
+
+<h2><%= link_to 'Add new course', new_course_path %></h2>
+
+<%= render :partial => 'course', :collection => @courses %>
