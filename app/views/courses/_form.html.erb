@@ -1,7 +1,14 @@
 <div>
   <%= bootstrap_form_for @course do |f| %>
-    <%= f.text_field :name %></br>
-    <%= f.number_field :enrollment %></br>
+    <%= f.text_field :name %>
+    <%= f.number_field :enrollment %>
+    <%= f.collection_check_boxes :textbook_ids, @textbooks, :id, :title, label: "Select textbook to adopt to course:" %>
+
+    <%= f.fields_for :textbooks_attributes do |textbooks_fields| %>
+      <%= textbooks_fields.label "Create new textbook to adopt to course:" %>
+      <%= textbooks_fields.text_field :title %>
+      <%= textbooks_fields.number_field :price %>
+    <% end %>
 
     <%= f.submit %>
   <% end %>

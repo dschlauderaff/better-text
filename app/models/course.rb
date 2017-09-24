@@ -9,6 +9,11 @@ class Course < ApplicationRecord
     textbooks.sum {|textbook| textbook.price}
   end
 
-  
+  def textbooks_attributes=(textbook_attributes)
+    if textbook_attributes.values.none? {|value| value == ""}
+      textbook = Textbook.find_or_create_by(textbook_attributes)
+      self.textbooks << textbook
+    end
+  end
 
 end
