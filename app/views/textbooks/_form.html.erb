@@ -25,7 +25,7 @@
     <%= f.label "Select Course to adopt textbook:" %>
     <%= f.collection_check_boxes :course_ids, Course.all, :id, :name %></br>
 
-    <%= f.fields_for :courses, @textbook.courses.build do |courses_fields| %>
+    <%= f.fields_for :courses_attributes do |courses_fields| %>
       <%= courses_fields.label "Create new course to adopt textbook:" %></br>
       <%= courses_fields.label :name %>
       <%= courses_fields.text_field :name %></br>
