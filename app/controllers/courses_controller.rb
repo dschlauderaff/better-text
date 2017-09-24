@@ -21,7 +21,7 @@ class CoursesController < ApplicationController
   end
 
   def update
-    rais params.inspect
+    raise params.inspect
   end
 
   def destroy

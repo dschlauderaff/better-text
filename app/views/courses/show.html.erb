@@ -10,4 +10,6 @@
   <%= "No adoptions created" %>  
 <% end %>
 
+<h3>Total textbook cost for student: $<%= @course.total_cost_to_student %></h3>
+
 <%= link_to 'Delete course', course_path(@course, :method => 'delete') %>
