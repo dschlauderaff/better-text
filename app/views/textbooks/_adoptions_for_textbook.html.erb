@@ -1,8 +1,8 @@
 <ul>
-  <% textbook.adoptions.each do |adoption| %>
+  
     <li><%= link_to adoption.course.name, course_path(adoption.course) %> | <%= adoption.course.enrollment %> students
     <% if user_signed_in? %>
       <%= button_to "Order Textbooks", adoptions_path(course_id: adoption.course) %>
     <% end %></li>
-  <% end %>
+  
 </ul>

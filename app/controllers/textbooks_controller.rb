@@ -1,5 +1,7 @@
 class TextbooksController < ApplicationController
   
+  before_action :set_textbook, only: [:show, :edit, :update, :destroy]
+
   def index
     @textbooks = Textbook.all
   end
@@ -21,19 +23,20 @@ class TextbooksController < ApplicationController
   end
 
   def update
+    @textbook.update(textbook_params)
+    return render :edit unless @textbook.save
+    redirect_to textbook_path(@textbook)
   end
 
   def destroy
-    textbook.destroy
+    @textbook.destroy
   end
 
   private
 
-  def textbook
-    @textbook ||= Textbook.find(params[:id])
+  def set_textbook
+    @textbook = Textbook.find_by(params[:id])
   end
-  helper_method :textbook
-
 
   def textbook_params
     params.require(:textbook).permit(:title, :price, course_ids:[], courses_attributes: [:name, :enrollment])

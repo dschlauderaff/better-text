@@ -1,10 +1,12 @@
-<h1><%= textbook.title %></h1>
+<h1><%= @textbook.title %></h1>
 
-<p>Unit cost: $<%= textbook.price %></p>
-<p><%= textbook.inventory %> units on hand. | $<%= textbook.inventory_cost %> total cost.</p>
+<%= link_to "Edit textbook", edit_textbook_path(@textbook) %>
 
-<% if textbook.adoptions.length > 0 %>
-  <%= render :partial => "adoptions_for_textbook", :collection => textbook.adoptions %>
+<p>Unit cost: $<%= @textbook.price %></p>
+<p><%= @textbook.inventory %> units on hand. | $<%= @textbook.inventory_cost %> total cost.</p>
+
+<% if @textbook.adoptions.length > 0 %>
+  <%= render :partial => "adoptions_for_textbook", :collection => @textbook.adoptions, as: :adoption %>
 <% else %>
   <%= "No adoptions created" %>
 <% end %>
