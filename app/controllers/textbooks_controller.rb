@@ -30,12 +30,13 @@ class TextbooksController < ApplicationController
 
   def destroy
     @textbook.destroy
+    redirect_to textbooks_path
   end
 
   private
 
   def set_textbook
-    @textbook = Textbook.find_by(params[:id])
+    @textbook = Textbook.find(params[:id])
   end
 
   def textbook_params
