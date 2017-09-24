@@ -11,6 +11,7 @@ class TextbooksController < ApplicationController
 
   def new
     @textbook = Textbook.new
+    @courses = Course.all
   end
 
   def create
@@ -20,6 +21,7 @@ class TextbooksController < ApplicationController
   end
 
   def edit
+    @courses = Course.all
   end
 
   def update
