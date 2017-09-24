@@ -1,35 +1,14 @@
-<% if @textbook.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@textbook.errors.count, "error") %>
-      prohibited this textbook from being saved:
-    </h2>
-
-    <ul>
-    <% @textbook.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      
-    <% end %>  
-    </ul>
-  </div>
-<% end %>
-
 <div>
-  <%= form_for @textbook do |f| %>
-    <%= f.label :title %>
+  <%= bootstrap_form_for @textbook do |f| %>
     <%= f.text_field :title %></br>
 
-    <%= f.label :price %>
     <%= f.number_field :price %></br>
 
-    <%= f.label "Select Course to adopt textbook:" %>
-    <%= f.collection_check_boxes :course_ids, Course.all, :id, :name %></br>
+    <%= f.collection_check_boxes :course_ids, Course.all, :id, :name, label: "Select course to adopt textbook:" %></br>
 
     <%= f.fields_for :courses_attributes do |courses_fields| %>
       <%= courses_fields.label "Create new course to adopt textbook:" %></br>
-      <%= courses_fields.label :name %>
       <%= courses_fields.text_field :name %></br>
-      <%= courses_fields.label :enrollment %>
       <%= courses_fields.number_field :enrollment %></br>
     <% end %>
     
