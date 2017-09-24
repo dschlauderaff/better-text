@@ -8,7 +8,7 @@
 <% if @textbook.adoptions.length > 0 %>
   <%= render :partial => "adoptions_for_textbook", :collection => @textbook.adoptions, as: :adoption %>
 <% else %>
-  <%= "No adoptions created" %>
+  <%= "No adoptions created" %></br>
 <% end %>
 
 <%= link_to 'Delete textbook', textbook_path(@textbook), :method => "delete" %>

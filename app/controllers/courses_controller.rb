@@ -14,14 +14,18 @@ class CoursesController < ApplicationController
   end
 
   def create
-    raise params.inspect
+    @course = Course.create(course_params)
+    return render :new unless @course.save
+    redirect_to course_path(@course)
   end
 
   def edit
   end
 
   def update
-    raise params.inspect
+    @course.update(course_params)
+    return render :edit unless @course.save
+    redirect_to course_path(@course)
   end
 
   def destroy
