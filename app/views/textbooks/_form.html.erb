@@ -1,9 +1,26 @@
-<%= form_for @textbook do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %></br>
+<% if @textbook.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@textbook.errors.count, "error") %>
+      prohibited this textbook from being saved:
+    </h2>
 
-  <%= f.label :price %>
-  <%= f.number_field :price %></br>
-
-  <%= f.submit %>
+    <ul>
+    <% @textbook.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      
+    <% end %>  
+    </ul>
+  </div>
 <% end %>
+<div>
+  <%= form_for @textbook do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %></br>
+
+    <%= f.label :price %>
+    <%= f.number_field :price %></br>
+
+    <%= f.submit %>
+  <% end %>
+</div>
