@@ -1,0 +1,12 @@
+<h1>Courses with no books ordered</h1>
+
+<div>
+  <ul>
+    <% @adoptions.each do |adoption| %>
+      <li><%= link_to adoption.course.name, course_path(adoption.course) %> | <%= adoption.course.enrollment %> students</li>
+      <ul>
+      <p><%= link_to adoption.textbook.title, course_textbook_path(adoption.course,adoption.textbook) %> | $<%= adoption.textbook.price %></p>
+      </ul>
+    <% end %>
+  </ul>
+</div>

@@ -16,5 +16,4 @@ class Textbook < ApplicationRecord
       self.courses << course
     end
   end
-
 end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-  get 'report/index'
+  get 'reports/index'
+  get 'reports/courses_without_books'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks"}
   root to: 'welcome#index'

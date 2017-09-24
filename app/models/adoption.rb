@@ -8,4 +8,8 @@ class Adoption < ApplicationRecord
       update(ordered: true)
     end
   end
+
+  def self.courses_without_books
+    self.includes(:course).where(ordered: false).order("courses.name asc")
+  end
 end
