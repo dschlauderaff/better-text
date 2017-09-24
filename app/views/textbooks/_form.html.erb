@@ -22,6 +22,17 @@
     <%= f.label :price %>
     <%= f.number_field :price %></br>
 
+    <%= f.label "Select Course to adopt textbook:" %>
+    <%= f.collection_check_boxes :course_ids, Course.all, :id, :name %></br>
+
+    <%= f.fields_for :courses, @textbook.courses.build do |courses_fields| %>
+      <%= courses_fields.label "Create new course to adopt textbook:" %></br>
+      <%= courses_fields.label :name %>
+      <%= courses_fields.text_field :name %></br>
+      <%= courses_fields.label :enrollment %>
+      <%= courses_fields.number_field :enrollment %></br>
+    <% end %>
+    
     <%= f.submit %>
   <% end %>
 </div>

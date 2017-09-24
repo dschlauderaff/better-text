@@ -36,6 +36,6 @@ class TextbooksController < ApplicationController
 
 
   def textbook_params
-    params.require(:textbook).permit(:title, :price)
+    params.require(:textbook).permit(:title, :price, course_ids:[], courses_attributes: [:name, :enrollment])
   end
 end

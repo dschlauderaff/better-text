@@ -8,7 +8,7 @@ Specs:
 - [x] The "through" part of the has_many through includes at least one user submittable attribute (adoption.ordered)
 - [x] Include reasonable validations for simple model objects (Textbooks, Courses, validate presence of unique title/name, numericality of price/enrollment)
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
-- [ ] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
+- [x] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name textbooks/new, course)
 - [x] Include signup (using Devise)
 - [x] Include login (using Devise)
 - [x] Include logout (how e.g. Devise)
