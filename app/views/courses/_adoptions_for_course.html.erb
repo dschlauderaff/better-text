@@ -1,0 +1,6 @@
+<ul>
+  <li><%= link_to adoption.textbook.title, textbook_path(adoption.textbook) %> | $<%= adoption.textbook.price %>
+  <% if user_signed_in? %>
+    <%= button_to "Order Textbooks", adoptions_path(course_id: adoption.course) %>
+  <% end %></li>
+</ul>

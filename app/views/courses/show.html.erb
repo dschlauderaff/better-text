@@ -1,0 +1,13 @@
+<h1><%= @course.name %></h1>
+
+<h3><%= link_to "Edit course", edit_course_path(@course) %></h3>
+
+<p>Students enrolled: <%= @course.enrollment %>
+
+<% if @course.adoptions.length > 0 %>
+  <%= render :partial => "adoptions_for_course", :collection => @course.adoptions, as: :adoption %>
+<% else %>
+  <%= "No adoptions created" %>  
+<% end %>
+
+<%= link_to 'Delete course', course_path(@course, :method => 'delete') %>
