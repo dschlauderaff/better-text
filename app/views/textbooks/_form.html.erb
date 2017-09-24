@@ -4,12 +4,16 @@
 
     <%= f.number_field :price %></br>
 
-    <%= f.collection_check_boxes :course_ids, @courses, :id, :name, label: "Select course to adopt textbook:" %></br>
+    <% if @courses.present? %>
+      <%= f.collection_check_boxes :course_ids, @courses, :id, :name, label: "Select course to adopt textbook:" %></br>
 
-    <%= f.fields_for :courses_attributes do |courses_fields| %>
-      <%= courses_fields.label "Create new course to adopt textbook:" %></br>
-      <%= courses_fields.text_field :name %></br>
-      <%= courses_fields.number_field :enrollment %></br>
+      <%= f.fields_for :courses_attributes do |courses_fields| %>
+        <%= courses_fields.label "Create new course to adopt textbook:" %></br>
+        <%= courses_fields.text_field :name %></br>
+        <%= courses_fields.number_field :enrollment %></br>
+      <% end %>
+    <% else %>
+       <%= f.hidden_field :course_ids, value: @course.id %>
     <% end %>
     
     <%= f.submit %>

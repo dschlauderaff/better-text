@@ -4,8 +4,8 @@
 
 <p>Students enrolled: <%= @course.enrollment %></p>
 
-<% if @course.adoptions.length > 0 %>
-  <%= render :partial => "adoptions_for_course", :collection => @course.adoptions, as: :adoption %>
+<% if @course.textbooks.length > 0 %>
+  <%= render :partial => "adoptions_for_course", :collection => @course.textbooks, as: :textbook, :locals => { :course => @course} %>
 <% else %>
   <%= "No adoptions created" %>  
 <% end %>

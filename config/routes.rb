@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks"}
   root to: 'welcome#index'
+
   
-  get 'welcome/index'
+  resources :courses, only: [:show] do
+    resources :textbooks, only: [:show, :new]
+  end
 
   resources :textbooks, :courses, :adoptions
 
