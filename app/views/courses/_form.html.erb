@@ -2,7 +2,10 @@
   <%= bootstrap_form_for @course do |f| %>
     <%= f.text_field :name %>
     <%= f.number_field :enrollment %>
-    <%= f.collection_check_boxes :textbook_ids, @textbooks, :id, :title, label: "Select textbook to adopt to course:" %>
+    
+    <% if @textbooks.present? %>
+      <%= f.collection_check_boxes :textbook_ids, @textbooks, :id, :title, label: "Select textbook to adopt to course:" %>
+    <% end %>
 
     <%= f.fields_for :textbooks_attributes do |textbooks_fields| %>
       <%= textbooks_fields.label "Create new textbook to adopt to course:" %>
