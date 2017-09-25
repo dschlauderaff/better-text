@@ -2,9 +2,7 @@
   
     <li><%= link_to adoption.course.name, course_path(adoption.course) %> | <%= adoption.course.enrollment %> students
    
-   <!-- TODO - implement this button and feature
     <% if user_signed_in? %>
-      <%= button_to "Order Textbooks", adoptions_path(course_id: adoption.course) %>
+      <%= button_to "Order Textbooks", adoptions_order_textbook_path(adoption_id: adoption.id) %>
     <% end %></li>
-  -->
 </ul>
