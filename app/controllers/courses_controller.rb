@@ -32,6 +32,7 @@ class CoursesController < ApplicationController
   end
 
   def destroy
+    @course.adoptions.delete_all
     @course.destroy
     redirect_to courses_path
   end
