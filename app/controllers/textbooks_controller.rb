@@ -23,8 +23,8 @@ class TextbooksController < ApplicationController
   end
 
   def create
-    # raise params.inspect
     @textbook = Textbook.create(textbook_params)
+    @courses = Course.all
     return render :new  unless @textbook.save
     redirect_to textbook_path(@textbook)
   end

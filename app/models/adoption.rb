@@ -2,6 +2,7 @@ class Adoption < ApplicationRecord
   belongs_to :textbook
   belongs_to :course
 
+  #TODO implement this method
   def order_to_enrollment
     if !ordered
       textbook.update(inventory:  textbook.inventory + course.enrollment)

@@ -16,6 +16,7 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.create(course_params)
+    @textbooks = Textbook.all
     return render :new unless @course.save
     redirect_to course_path(@course)
   end

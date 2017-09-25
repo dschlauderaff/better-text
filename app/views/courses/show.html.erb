@@ -1,6 +1,6 @@
 <h1><%= @course.name %></h1>
 
-<h3><%= link_to "Edit course", edit_course_path(@course) %></h3>
+<h3><%= link_to "Edit course", edit_course_path(@course) %> | <%= link_to 'Add new textbook', new_course_textbook_path(@course) %></h3>
 
 <p>Students enrolled: <%= @course.enrollment %></p>
 

@@ -20,7 +20,7 @@
 
             <li><%= link_to "Textbooks", textbooks_path %></li>
             <li><%= link_to "Courses", courses_path %></li>
-            <li><%= "Signed in as #{current_user.email if user_signed_in?}" %></li>  <!-- TODO: temporary for development, remove after testing -->
+            <li><%= link_to "Reports", reports_index_path %></li> 
           </ul>
         </nav>
       </div>
