@@ -5,10 +5,6 @@
 <p>Unit cost: $<%= @textbook.price %></p>
 <p><%= @textbook.inventory %> units on hand. | $<%= @textbook.inventory_cost %> total cost.</p>
 
-<% if @textbook.adoptions.length > 0 %>
-  <%= render :partial => "adoptions_for_textbook", :collection => @textbook.adoptions, as: :adoption %>
-<% else %>
-  <%= "No adoptions created" %></br>
-<% end %>
+<%= (render :partial => "adoptions_for_textbook", :collection => @textbook.adoptions, as: :adoption) || "No adoptions created" %></br>
 
 <%= link_to 'Delete textbook', textbook_path(@textbook), :method => "delete" %>

@@ -1,0 +1,4 @@
+<li><%= link_to adoption.course.name, course_path(adoption.course) %> | <%= adoption.course.enrollment %> students</li>
+  <ul>
+    <p><%= link_to adoption.textbook.title, course_textbook_path(adoption.course,adoption.textbook) %> | $<%= adoption.textbook.price %></p>
+  </ul>
