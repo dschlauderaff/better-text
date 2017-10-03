@@ -9,3 +9,8 @@ Facebook.
 
 Functionality for ordering books and reporting are also present.
 
+Installation: fork and clone repo, bundle install, then migrate database
+
+Contributors: find a problem: email dschlaud@gmail.com
+
+License: This project has been licensed under the MIT open source license.
