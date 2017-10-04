@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170923190958) do
+ActiveRecord::Schema.define(version: 20171004145948) do
 
   create_table "adoptions", force: :cascade do |t|
     t.integer "course_id"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170923190958) do
     t.boolean "ordered", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "history", default: "0"
   end
 
   create_table "courses", force: :cascade do |t|

@@ -1,0 +1,7 @@
+<div>
+  <%= bootstrap_form_for @adoption do |f| %>
+    <%= f.label "Enter the number of textooks sold for this class in the previous semester" %><br>
+    <%= f.number_field :history %><br>
+    <%= f.submit %>
+  <% end %>
+</div>

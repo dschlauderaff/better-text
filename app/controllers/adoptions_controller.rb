@@ -3,7 +3,6 @@ class AdoptionsController < ApplicationController
   before_action :set_adoption, only: [:edit, :update]
 
   def edit
-    raise params.inspect
     
   end
 
@@ -24,4 +23,5 @@ class AdoptionsController < ApplicationController
 
   def set_adoption
     @adoption = Adoption.find(params[:id])
+  end
 end
