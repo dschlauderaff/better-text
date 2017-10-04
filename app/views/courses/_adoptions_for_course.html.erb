@@ -1,3 +1,4 @@
 <ul>
-  <li><%= link_to textbook.title, course_textbook_path(course,textbook) %> | $<%= textbook.price %>
+  <li><%= link_to textbook.title, course_textbook_path(course,textbook) %> | $<%= textbook.price %> | <%= link_to "Add adoption history", edit_adoption_path(adoption_for_course_and_textbook(course,textbook)) %>
 </ul>
+
