@@ -3,13 +3,12 @@ class AdoptionsController < ApplicationController
   before_action :set_adoption, only: [:edit, :update]
 
   def edit
-    
   end
 
   def update
-    @course.update(course_params)
-    return render :edit unless @course.save
-    redirect_to course_path(@course)
+    @adoption.update(adoption_params)
+    return render :edit unless @adoption.save
+    redirect_to course_path(@adoption.course)
   end
  
   def order_textbook
@@ -23,5 +22,9 @@ class AdoptionsController < ApplicationController
 
   def set_adoption
     @adoption = Adoption.find(params[:id])
+  end
+
+  def adoption_params
+    params.require(:adoption).permit(:history)
   end
 end

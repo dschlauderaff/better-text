@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20171004145948) do
     t.boolean "ordered", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "history", default: "0"
+    t.integer "history", default: 0
   end
 
   create_table "courses", force: :cascade do |t|
