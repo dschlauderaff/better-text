@@ -1,3 +1,0 @@
-module TextbooksHelper
- 
-end
