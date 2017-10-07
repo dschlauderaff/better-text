@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-  has_many :adoptions
+  has_many :adoptions, dependent: :destroy
   has_many :textbooks, through: :adoptions
 
   validates :name, presence: true, uniqueness: true
