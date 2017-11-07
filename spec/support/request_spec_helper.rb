@@ -1,0 +1,3 @@
+class RequestSpecHelper
+
+end
