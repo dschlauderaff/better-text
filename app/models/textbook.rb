@@ -1,5 +1,5 @@
 class Textbook < ApplicationRecord
-  has_many :adoptions
+  has_many :adoptions, dependent: :destroy
   has_many :courses, through: :adoptions
 
   validates :title, presence: true, uniqueness: true
