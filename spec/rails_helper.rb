@@ -40,7 +40,6 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
 
-  config.include Features::SessionHelpers, type: :feature
 
   # For request tests (E2E)
   config.include RequestSpecHelper, type: :request
