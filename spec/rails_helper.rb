@@ -40,6 +40,14 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
 
+  config.include Warden::Test::Helpers
+
+  config.after :each do
+    Warden.test_reset!
+  end
+
+  config.include Features::Helpers, type: :feature
+
 
   # For request tests (E2E)
   config.include RequestSpecHelper, type: :request
