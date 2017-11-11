@@ -5,7 +5,6 @@ RSpec.configure do |config|
     Warden.test_reset!
   end
 
-  config.include Features::SessionHelpers, type: :feature
+  config.include Features::Helpers, type: :feature
 
-  # config.include Features::TextbookHelpers, type: :feature
 end
