@@ -28,5 +28,12 @@ module Features
       fill_in 'textbook_title', with: title
       fill_in 'textbook_price', with: price
     end
+
+    def build_course(name, enrollment)
+      visit root_path
+      click_link "Add a new course"
+      fill_in 'course_name', with: name
+      fill_in 'course_enrollment', with: enrollment
+    end
   end
 end
