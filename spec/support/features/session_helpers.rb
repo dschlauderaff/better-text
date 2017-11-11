@@ -17,5 +17,10 @@ module Features
       click_button 'Log in'
     end
 
+    def login
+      user = FactoryBot.create(:user)
+      login_as(user, :scope => :user)
+    end
+
   end
 end
