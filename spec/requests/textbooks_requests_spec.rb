@@ -8,7 +8,7 @@ RSpec.describe 'Textbooks API', type: :request do
   #   return collection of textbooks
   describe 'GET /textbooks' do
 
-    before { get '/textbooks' }
+    before { get '/textbooks.json' }
 
     it 'returns a status code of 200' do
       expect(response).to have_http_status(200)
