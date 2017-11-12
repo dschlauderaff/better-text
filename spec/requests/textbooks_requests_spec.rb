@@ -14,7 +14,7 @@ RSpec.describe 'Textbooks API', type: :request do
       expect(response).to have_http_status(200)
     end
 
-    it 'returns a colletion of videos in JSON' do
+    it 'returns a colletion of textbooks in JSON' do
       json = JSON.parse(response.body)
 
       expect(json).not_to be_empty
