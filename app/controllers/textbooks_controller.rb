@@ -8,6 +8,12 @@ class TextbooksController < ApplicationController
     else
       @textbooks = Textbook.all
     end
+
+    respond_to do |format|
+      format.html { render :index}
+      format.json { render json: @textbooks}
+      end
+    end
   end
 
   def show

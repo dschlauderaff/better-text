@@ -50,7 +50,7 @@ RSpec.configure do |config|
 
 
   # For request tests (E2E)
-  config.include RequestSpecHelper, type: :request
+  # config.include RequestSpecHelper, type: :request
   
   # Setup database cleaner to run before the test suite and after each test
   config.before(:suite) do
