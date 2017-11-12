@@ -1,8 +1,7 @@
 $(function() {
   $('a:contains("View textbooks")').on('click', function(){
-    $.ajax({
-      url: this.href,
-      dataType: 'script'
+    $.getJSON('/textbooks').done(function(data){
+      console.log(data)
     })
 
 
