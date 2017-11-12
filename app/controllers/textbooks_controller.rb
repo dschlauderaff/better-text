@@ -9,10 +9,7 @@ class TextbooksController < ApplicationController
       @textbooks = Textbook.all
     end
 
-    respond_to do |format|
-      format.html { render :index}
-      format.json { render json: @textbooks}
-    end
+   
   end
 
   def show
