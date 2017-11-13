@@ -9,6 +9,8 @@ class TextbooksController < ApplicationController
       @textbooks = Textbook.all
     end
 
+    # render :layout => false
+    # render :json => @textbooks
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @textbooks}
