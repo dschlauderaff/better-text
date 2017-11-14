@@ -1,5 +1,5 @@
 $(function() {
-  $('div.d-container').on('click', 'a.textbooks', function (event) {
+  $('div#main').on('click', 'a.textbooks', function (event) {
     event.preventDefault()
     $.getJSON(this.href).success(function(data){
       let $div = $('div#textbooks')
@@ -7,16 +7,19 @@ $(function() {
 
       data.forEach(textbook => {
         $div.append(`<h3><a href='/textbooks/${textbook.id}'>${textbook.title}</a></h3>`)
-      });
+      })
     })
   })
-  $('div.d-container').on('click', 'a.courses', function (event) {
+
+  $('div#main').on('click', 'a.courses', function (event) {
     event.preventDefault()
-    $.getJSON(this.href).successs(function(data){
+    $.getJSON(this.href).success(function(data){
       let $div = $('div#courses')
       $div.empty()
 
-      
+      data.forEach(course => {
+        $div.append(`<h3><a href='/courses/${course.id}'>${course.name}</a></h3>`)
+      })
     })
   })
 })
