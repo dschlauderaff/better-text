@@ -33,7 +33,10 @@ class TextbooksController < ApplicationController
     @textbook = Textbook.create(textbook_params)
     @courses = Course.all
     return render :new  unless @textbook.save
-    redirect_to textbook_path(@textbook)
+    respond_to do |format|
+      format.html { redirect_to textbook_path(@textbook)}
+      format.json { render json: @textbook}
+    end
   end
 
   def edit
