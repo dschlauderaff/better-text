@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require handlebars
 //= require rails-ujs
 //= require_tree .
 //= require bettertext

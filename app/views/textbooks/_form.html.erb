@@ -19,3 +19,14 @@
     <%= f.submit %>
   <% end %>
 </div>
+
+<script id="textbook-template" type="text/x-handlebars-template">
+    <h1>{{title}}</h1>
+
+    <h3><a href="/textbooks/{{id}}/edit">Edit textbook</a></h3>
+
+    <p>Unit cost: ${{price}}</p>
+    <p>{{inventory}} units on hand. | $0 total cost.</p>
+
+    <a rel="nofollow" data-method="delete" href="/textbooks/{{id}}">Delete textbook</a>
+</script>

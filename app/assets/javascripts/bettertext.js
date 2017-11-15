@@ -1,3 +1,14 @@
+function Textbook(attributes){
+  this.title = attributes.title
+  this.id = attributes.id
+  this.price = attributes.price
+  this.inventory = attributes.inventory
+}
+
+Textbook.prototype.renderShow = function (){
+  
+}
+
 $(function() {
 
   //New Textbook Form ajax call
@@ -16,6 +27,13 @@ $(function() {
 
     }) 
     .success(function(json){
+      let $div = $('div#main')
+      let textbook = new textbook(json)
+      let textbookShow = textbook.renderShow()
+
+      $div.empty()
+      $div.append(textbookShow)
+
       console.log("it works", json)
     })
     .error(function(response){
