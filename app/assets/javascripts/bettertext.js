@@ -73,7 +73,7 @@ $(function() {
       success: function (json) {
         $('div#main').empty()
         createTextbookPartial(json)
-        
+
         textbook.courses.forEach(element => {
           createCoursePartial(element)
         })
@@ -98,7 +98,7 @@ $(function() {
       $div.empty()
 
       data.forEach(textbook => {
-        $div.append(`<h3><a href='/textbooks/${textbook.id}'>${textbook.title}</a></h3>`)
+        $div.append(`<h3><a class='textbook' href='/textbooks/${textbook.id}'>${textbook.title}</a></h3>`)
       })
     })
   })
@@ -111,9 +111,15 @@ $(function() {
       $div.empty()
 
       data.forEach(course => {
-        $div.append(`<h3><a href='/courses/${course.id}'>${course.name}</a></h3>`)
+        $div.append(`<h3><a class='course' href='/courses/${course.id}'>${course.name}</a></h3>`)
       })
     })
+  })
+
+  //Textbook Index to show page ajax call
+  $('#main').on('click', 'a.textbook', function (event){
+    event.preventDefault()
+    debugger
   })
 
   //templates for creating new textbook with ajax request  

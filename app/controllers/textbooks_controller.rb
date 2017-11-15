@@ -58,7 +58,6 @@ class TextbooksController < ApplicationController
   end
 
   def destroy
-    @textbook.adoptions.delete_all
     @textbook.destroy
     redirect_to textbooks_path
   end
