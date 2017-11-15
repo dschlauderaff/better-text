@@ -29,6 +29,7 @@ gem 'bootstrap-sass', '3.3.6'
 gem 'bootstrap_form'
 gem 'sprockets'
 gem 'active_model_serializers'
+gem 'handlebars_assets'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

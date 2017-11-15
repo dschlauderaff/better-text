@@ -4,9 +4,14 @@ function Textbook(attributes){
   this.price = attributes.price
   this.inventory = attributes.inventory
 }
+$(function(){
+  Textbook.templateSource = $('#textbook-template').html()
+  Textbook.template = Handlebars.compile(Textbook.templateSource)
+})
+
 
 Textbook.prototype.renderShow = function (){
-  
+  return Textbook.template(this)
 }
 
 $(function() {
@@ -28,7 +33,7 @@ $(function() {
     }) 
     .success(function(json){
       let $div = $('div#main')
-      let textbook = new textbook(json)
+      let textbook = new Textbook(json)
       let textbookShow = textbook.renderShow()
 
       $div.empty()
