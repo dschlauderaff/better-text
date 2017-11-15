@@ -43,6 +43,7 @@ $(function() {
         console.log("Problem?", xhr)
         let errors = $.parseJSON(xhr.responseText).errors
         alert(errors.join(', '))
+        $('#new_textbook input:submit').prop('disabled', false)
       }
     }) 
     // .success(function(json){
