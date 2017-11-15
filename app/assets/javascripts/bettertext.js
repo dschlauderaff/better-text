@@ -28,22 +28,38 @@ $(function() {
       url: action,
       data: params,
       dataType: 'JSON',
-      method: 'POST'
+      method: 'POST',
+      success: function (json) {
+        let $div = $('div#main')
+        let textbook = new Textbook(json)
+        let textbookShow = textbook.renderShow()
 
+        $div.empty()
+        $div.append(textbookShow)
+
+        console.log("it works", json)
+      },
+      error: function (xhr) {
+        console.log("Problem?", xhr)
+        let errors = $.parseJSON(xhr.responseText).errors
+        alert(errors.join(', '))
+      }
     }) 
-    .success(function(json){
-      let $div = $('div#main')
-      let textbook = new Textbook(json)
-      let textbookShow = textbook.renderShow()
+    // .success(function(json){
+    //   let $div = $('div#main')
+    //   let textbook = new Textbook(json)
+    //   let textbookShow = textbook.renderShow()
 
-      $div.empty()
-      $div.append(textbookShow)
+    //   $div.empty()
+    //   $div.append(textbookShow)
 
-      console.log("it works", json)
-    })
-    .error(function(response){
-      console.log("Problem?", response)
-    })
+    //   console.log("it works", json)
+    // })
+    // .error(function(response){
+    //   console.log("Problem?", response)
+    //   let errors = $.parseJSON(response.responseText).errors
+    //   debugger
+    // })
   })
 
   //Welcome Page Textbook Index ajax call
