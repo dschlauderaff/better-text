@@ -3,10 +3,22 @@ function Textbook(attributes){
   this.id = attributes.id
   this.price = attributes.price
   this.inventory = attributes.inventory
+  this.courses = attributes.courses
+  this.adoptions = attributes.adoptions
 }
 
 Textbook.prototype.renderShow = function (){
   return Textbook.template(this)
+}
+
+function Course(attributes){
+  this.name = attributes.name
+  this.id = attributes.id
+  this.enrollment = attributes.enrollment
+}
+
+Course.prototype.renderShow = function (){
+  return Course.template(this)
 }
 
 $(function() {
@@ -24,13 +36,19 @@ $(function() {
       dataType: 'JSON',
       method: 'POST',
       success: function (json) {
-        // debugger
         let $div = $('div#main')
         let textbook = new Textbook(json)
         let textbookShow = textbook.renderShow()
-
+        
         $div.empty()
         $div.append(textbookShow)
+        textbook.courses.forEach(element => {
+          let course = new Course(element)
+          let courseShow = course.renderShow()
+          debugger
+
+          $('ul#textbook-courses').append(courseShow)
+        });
       },
       error: function (xhr) {
         let errors = $.parseJSON(xhr.responseText).errors
@@ -67,8 +85,10 @@ $(function() {
   })
 
   //template for creating new textbook with ajax request  
-  if ($('#textbook-template') > 0) {
+  if ($('#textbook-template').length > 0) {
     Textbook.templateSource = $('#textbook-template').html()
     Textbook.template = Handlebars.compile(Textbook.templateSource)
+    Course.templateSource = $('#textbook-course-template').html()
+    Course.template = Handlebars.compile(Course.templateSource)
   }
 })
