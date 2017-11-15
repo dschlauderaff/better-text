@@ -18,6 +18,11 @@ class TextbooksController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html { render show: @textbook }
+      format.json { render json: @textbook }
+    end
+
   end
 
   def new
@@ -36,6 +41,8 @@ class TextbooksController < ApplicationController
     return render :json => { :errors => @textbook.errors.full_messages }, status: 422 unless @textbook.save
     respond_to do |format|
       format.html { redirect_to textbook_path(@textbook)}
+
+      # binding.pry
       format.json { render json: @textbook}
     end
   end
