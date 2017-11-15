@@ -4,9 +4,12 @@ function Textbook(attributes){
   this.price = attributes.price
   this.inventory = attributes.inventory
 }
+
 $(function(){
-  Textbook.templateSource = $('#textbook-template').html()
-  Textbook.template = Handlebars.compile(Textbook.templateSource)
+  if ($('#textbook-template') > 0){
+    Textbook.templateSource = $('#textbook-template').html()
+    Textbook.template = Handlebars.compile(Textbook.templateSource)
+  }
 })
 
 
@@ -29,7 +32,7 @@ $(function() {
       dataType: 'JSON',
       method: 'POST',
       success: function (json) {
-        debugger
+        // debugger
         let $div = $('div#main')
         let textbook = new Textbook(json)
         let textbookShow = textbook.renderShow()
