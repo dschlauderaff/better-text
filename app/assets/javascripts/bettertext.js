@@ -5,14 +5,6 @@ function Textbook(attributes){
   this.inventory = attributes.inventory
 }
 
-$(function(){
-  if ($('#textbook-template') > 0){
-    Textbook.templateSource = $('#textbook-template').html()
-    Textbook.template = Handlebars.compile(Textbook.templateSource)
-  }
-})
-
-
 Textbook.prototype.renderShow = function (){
   return Textbook.template(this)
 }
@@ -73,4 +65,10 @@ $(function() {
       })
     })
   })
+
+  //template for creating new textbook with ajax request  
+  if ($('#textbook-template') > 0) {
+    Textbook.templateSource = $('#textbook-template').html()
+    Textbook.template = Handlebars.compile(Textbook.templateSource)
+  }
 })
