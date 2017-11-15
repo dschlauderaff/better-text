@@ -32,6 +32,21 @@ Adoption.prototype.renderButton = function (){
   return Adoption.template(this)
 }
 
+function createCoursePartial(element){
+  let course = new Course(element)
+  let courseShow = course.renderShow()
+
+  $('ul#textbook-courses').append(courseShow)
+}
+
+function createAdoptionButton(element){
+  let adoption = new Adoption(element)
+  let adoptionButton = adoption.renderButton()
+
+  $(`#course_id_${adoption.course_id}`).after(adoptionButton)
+
+}
+
 $(function() {
 
   //New Textbook Form ajax call
@@ -54,18 +69,11 @@ $(function() {
         $div.empty()
         $div.append(textbookShow)
         textbook.courses.forEach(element => {
-          let course = new Course(element)
-          let courseShow = course.renderShow()
-
-          $('ul#textbook-courses').append(courseShow)
+          createCoursePartial(element)
         })
 
         textbook.adoptions.forEach(element => {
-          let adoption = new Adoption(element)
-          let adoptionButton = adoption.renderButton()
-          // debugger
-
-          $(`#course_id_${adoption.course_id}`).after(adoptionButton)
+          createAdoptionButton(element)
         })
       },
       error: function (xhr) {
