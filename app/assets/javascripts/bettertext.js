@@ -32,6 +32,15 @@ Adoption.prototype.renderButton = function (){
   return Adoption.template(this)
 }
 
+function createTextbookPartial(element){
+  let textbook = new Textbook(element)
+  let textbookShow = textbook.renderShow()
+
+  $('div#main').append(textbookShow)
+
+}
+
+
 function createCoursePartial(element){
   let course = new Course(element)
   let courseShow = course.renderShow()
@@ -62,12 +71,9 @@ $(function() {
       dataType: 'JSON',
       method: 'POST',
       success: function (json) {
-        let $div = $('div#main')
-        let textbook = new Textbook(json)
-        let textbookShow = textbook.renderShow()
+        $('div#main').empty()
+        createTextbookPartial(json)
         
-        $div.empty()
-        $div.append(textbookShow)
         textbook.courses.forEach(element => {
           createCoursePartial(element)
         })
