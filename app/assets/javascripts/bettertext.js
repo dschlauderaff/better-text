@@ -21,6 +21,17 @@ Course.prototype.renderShow = function (){
   return Course.template(this)
 }
 
+function Adoption(attributes){
+  this.id = attributes.id
+  this.course_id = attributes.course_id
+  this.textbook_id = attributes.textbook_id
+  this.ordered = attributes.ordered
+}
+
+Adoption.prototype.renderButton = function (){
+  return Adoption.template(this)
+}
+
 $(function() {
 
   //New Textbook Form ajax call
@@ -45,10 +56,17 @@ $(function() {
         textbook.courses.forEach(element => {
           let course = new Course(element)
           let courseShow = course.renderShow()
-          debugger
 
           $('ul#textbook-courses').append(courseShow)
-        });
+        })
+
+        textbook.adoptions.forEach(element => {
+          let adoption = new Adoption(element)
+          let adoptionButton = adoption.renderButton()
+          // debugger
+
+          $(`#course_id_${adoption.course_id}`).after(adoptionButton)
+        })
       },
       error: function (xhr) {
         let errors = $.parseJSON(xhr.responseText).errors
@@ -84,11 +102,13 @@ $(function() {
     })
   })
 
-  //template for creating new textbook with ajax request  
+  //templates for creating new textbook with ajax request  
   if ($('#textbook-template').length > 0) {
     Textbook.templateSource = $('#textbook-template').html()
     Textbook.template = Handlebars.compile(Textbook.templateSource)
     Course.templateSource = $('#textbook-course-template').html()
     Course.template = Handlebars.compile(Course.templateSource)
+    Adoption.templateSource = $('#order-template').html()
+    Adoption.template = Handlebars.compile(Adoption.templateSource)
   }
 })
