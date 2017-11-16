@@ -37,6 +37,7 @@ function createTextbookPartial(element){
   let textbookShow = textbook.renderShow()
 
   $('div#main').append(textbookShow)
+  return textbook
 
 }
 
@@ -72,12 +73,16 @@ $(function() {
       method: 'POST',
       success: function (json) {
         $('div#main').empty()
-        createTextbookPartial(json)
+        let textbook = createTextbookPartial(json)
+        history.pushState(null, null, `/textbooks/${textbook.id}`)
 
         textbook.courses.forEach(element => {
           createCoursePartial(element)
         })
 
+        if (textbook.adoptions.length === 0){
+          $('ul#textbook-courses').append("No adoptions created")
+        }
         textbook.adoptions.forEach(element => {
           createAdoptionButton(element)
         })
@@ -117,10 +122,14 @@ $(function() {
   })
 
   //Textbook Index to show page ajax call
-  $('#main').on('click', 'a.textbook', function (event){
-    event.preventDefault()
-    debugger
-  })
+  // $('#main').on('click', 'a.textbook', function (event){
+  //   event.preventDefault()
+  //   $.getJSON(this.href).success(function(data){
+  //     debugger
+
+  //   })
+  // })
+  //Textbook Show browse page ajax call
 
   //templates for creating new textbook with ajax request  
   if ($('#textbook-template').length > 0) {
