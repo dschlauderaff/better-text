@@ -57,7 +57,7 @@ function createAdoptionButton(element){
 
 }
 
-$(function() {
+$(document).on('turbolinks:load', function() {
 
   //New Textbook Form ajax call
   $("form#new_textbook").on('submit', function(e){

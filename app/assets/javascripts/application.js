@@ -13,5 +13,6 @@
 //= require jquery
 //= require rails-ujs
 //= require handlebars
+//= require turbolinks
 //= require_tree .
 //= require bettertext
