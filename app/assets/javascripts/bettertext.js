@@ -122,13 +122,26 @@ $(document).on('turbolinks:load', function() {
   })
 
   //Textbook Index to show page ajax call
-  // $('#main').on('click', 'a.textbook', function (event){
-  //   event.preventDefault()
-  //   $.getJSON(this.href).success(function(data){
-  //     debugger
+  $('#main').on('click', 'a.textbook', function (event){
+    event.preventDefault()
+    $.getJSON(this.href).success(function(json){
+      debugger
+      $('div#main').empty()
+      let textbook = createTextbookPartial(json)
+      history.pushState(null, null, `/textbooks/${textbook.id}`)
 
-  //   })
-  // })
+      textbook.courses.forEach(element => {
+        createCoursePartial(element)
+      })
+
+      if (textbook.adoptions.length === 0) {
+        $('ul#textbook-courses').append("No adoptions created")
+      }
+      textbook.adoptions.forEach(element => {
+        createAdoptionButton(element)
+      })  
+    })
+  })
   //Textbook Show browse page ajax call
 
   //templates for creating new textbook with ajax request  
