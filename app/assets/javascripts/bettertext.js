@@ -141,7 +141,6 @@ $(document).on('turbolinks:load', function() {
       })  
     })
   })
-  //Textbook Show browse page ajax call
 
   //templates for creating new textbook with ajax request  
   if ($('#textbook-template').length > 0) {

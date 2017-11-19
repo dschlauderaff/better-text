@@ -37,12 +37,10 @@ class TextbooksController < ApplicationController
   def create
     @textbook = Textbook.create(textbook_params)
     @courses = Course.all
-    # return render :new  unless @textbook.save
     return render :json => { :errors => @textbook.errors.full_messages }, status: 422 unless @textbook.save
     respond_to do |format|
       format.html { redirect_to textbook_path(@textbook)}
 
-      # binding.pry
       format.json { render json: @textbook}
     end
   end
