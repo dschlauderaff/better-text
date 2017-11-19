@@ -9,13 +9,20 @@ class TextbooksController < ApplicationController
       @textbooks = Textbook.all
     end
 
+    # render :layout => false
+    # render :json => @textbooks
     respond_to do |format|
-      format.html { render :index}
+      format.html { render :index }
       format.json { render json: @textbooks}
     end
   end
 
   def show
+    respond_to do |format|
+      format.html { render show: @textbook }
+      format.json { render json: @textbook }
+    end
+
   end
 
   def new
@@ -30,8 +37,14 @@ class TextbooksController < ApplicationController
   def create
     @textbook = Textbook.create(textbook_params)
     @courses = Course.all
-    return render :new  unless @textbook.save
-    redirect_to textbook_path(@textbook)
+    # return render :new  unless @textbook.save
+    return render :json => { :errors => @textbook.errors.full_messages }, status: 422 unless @textbook.save
+    respond_to do |format|
+      format.html { redirect_to textbook_path(@textbook)}
+
+      # binding.pry
+      format.json { render json: @textbook}
+    end
   end
 
   def edit
@@ -45,7 +58,6 @@ class TextbooksController < ApplicationController
   end
 
   def destroy
-    @textbook.adoptions.delete_all
     @textbook.destroy
     redirect_to textbooks_path
   end

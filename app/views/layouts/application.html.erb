@@ -28,8 +28,33 @@
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <div class="container">
+    <div class="container" id="main">
     <%= yield %>
     </div>
   </body>
+  <script id="textbook-template" type="text/x-handlebars-template">
+    <h1>{{title}}</h1>
+
+    <h3><a href="/textbooks/{{id}}/edit">Edit textbook</a></h3>
+
+    <p>Unit cost: ${{price}}</p>
+    <p>{{inventory}} units on hand. | $0 total cost.</p>
+
+    <ul id="textbook-courses">
+    </ul> 
+
+    <a rel="nofollow" data-method="delete" href="/textbooks/{{id}}">Delete textbook</a>
+</script>
+
+<script id="textbook-course-template" type="text/x-handlebars-template">
+  <li id='course_id_{{id}}'><a href="/courses/{{id}}">{{name}}</a> | {{enrollment}} students
+  </li>
+</script>
+
+<script id="order-template" type="text/x-handlebars-template">
+  <form class="button_to" method="post" action="/adoptions/order_textbook?adoption_id={{id}}">
+  <input type="submit" value="Order Textbooks">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </form>
+  </script>
 </html>
