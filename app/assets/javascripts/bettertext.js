@@ -125,7 +125,6 @@ $(document).on('turbolinks:load', function() {
   $('#main').on('click', 'a.textbook', function (event){
     event.preventDefault()
     $.getJSON(this.href).success(function(json){
-      debugger
       $('div#main').empty()
       let textbook = createTextbookPartial(json)
       history.pushState(null, null, `/textbooks/${textbook.id}`)
