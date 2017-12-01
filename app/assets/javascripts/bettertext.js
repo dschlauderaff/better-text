@@ -96,16 +96,17 @@ $(document).on('turbolinks:load', function() {
   })
 
   //Welcome Page Textbook Index ajax call
-  $('div#main').on('click', 'a.textbooks', function (event) {
+  $('a.textbooks').on('click', function (event) {
     event.preventDefault()
     $.getJSON(this.href).success(function(data){
       let $div = $('div#textbooks')
+      this.remove()
       $div.empty()
-
+      
       data.forEach(textbook => {
         $div.append(`<h3><a class='textbook' href='/textbooks/${textbook.id}'>${textbook.title}</a></h3>`)
       })
-    })
+    }.bind(this))
   })
 
   //Welcome Page Course Index ajax call

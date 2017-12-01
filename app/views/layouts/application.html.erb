@@ -32,6 +32,7 @@
     <%= yield %>
     </div>
   </body>
+
   <script id="textbook-template" type="text/x-handlebars-template">
     <h1>{{title}}</h1>
 
@@ -44,17 +45,17 @@
     </ul> 
 
     <a rel="nofollow" data-method="delete" href="/textbooks/{{id}}">Delete textbook</a>
-</script>
+  </script>
 
-<script id="textbook-course-template" type="text/x-handlebars-template">
-  <li id='course_id_{{id}}'><a href="/courses/{{id}}">{{name}}</a> | {{enrollment}} students
-  </li>
-</script>
+  <script id="textbook-course-template" type="text/x-handlebars-template">
+    <li id='course_id_{{id}}'><a href="/courses/{{id}}">{{name}}</a> | {{enrollment}} students
+    </li>
+  </script>
 
-<script id="order-template" type="text/x-handlebars-template">
-  <form class="button_to" method="post" action="/adoptions/order_textbook?adoption_id={{id}}">
-  <input type="submit" value="Order Textbooks">
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  </form>
+  <script id="order-template" type="text/x-handlebars-template">
+    <form class="button_to" method="post" action="/adoptions/order_textbook?adoption_id={{id}}">
+    <input type="submit" value="Order Textbooks">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    </form>
   </script>
 </html>
